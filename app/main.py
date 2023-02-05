@@ -3,6 +3,8 @@ import uvicorn
 from fastapi import FastAPI
 from routers import music, playlist
 from database.database import Base, engine
+
+
 Base.metadata.create_all(bind=engine)
 
 

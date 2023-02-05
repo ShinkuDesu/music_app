@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from models.music import MusicModel
+from .music import MusicModel
 
 
 class PlaylistBaseModel(BaseModel):

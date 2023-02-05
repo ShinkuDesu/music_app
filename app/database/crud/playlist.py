@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from database.tables import PlaylistTable
+from database.tables.playlist import PlaylistTable
 
 
 class PlaylistCrud:

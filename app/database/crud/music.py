@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
 
-from database.tables import MusicTable
-from models.music import MusicCreateModel
+from ..tables.music import MusicTable
+from ..models.music import MusicCreateModel
+
 
 class MusicCrud:
     def __init__(self, session: Session):

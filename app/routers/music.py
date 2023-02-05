@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from database.database import get_session
 from sqlalchemy.orm import Session
-from crud.music import MusicCrud
-from models.music import MusicModel, MusicCreateModel
+from database.crud.music import MusicCrud
+from database.models.music import MusicModel, MusicCreateModel
 
 
 router = APIRouter(
