@@ -16,7 +16,11 @@ class MusicBase(SQLModel):
 class Music(MusicBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
     
-    playlists: list['Playlist'] = Relationship(back_populates='musics', link_model=MusicPlaylistLink)
+    playlists: list['Playlist'] = Relationship(
+        back_populates='musics',
+        link_model=MusicPlaylistLink,
+        sa_relationship_kwargs={"lazy": "selectin"},
+    )
     
 
 class MusicCreate(MusicBase):
@@ -30,5 +34,5 @@ class MusicRead(MusicBase):
     id: int
 
 
-class MusicReadWithPlaylists(MusicRead):
+class MusicReadWithPlaylists(MusicRead, lazy=False):
     playlists: list['PlaylistRead'] = []
