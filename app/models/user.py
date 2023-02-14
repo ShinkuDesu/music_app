@@ -13,7 +13,11 @@ class UserBase(SQLModel):
 class User(UserBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
 
-    playlists: list['Playlist'] = Relationship(back_populates='users', link_model=UserPlaylistLink)
+    playlists: list['Playlist'] = Relationship(
+        back_populates='users',
+        link_model=UserPlaylistLink,
+        sa_relationship_kwargs={"lazy": "selectin"},
+    )
     hashed_password: str
 
 

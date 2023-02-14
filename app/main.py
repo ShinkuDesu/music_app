@@ -15,8 +15,8 @@ app.include_router(user.router)
 
 
 @app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
+async def on_startup():
+    await create_db_and_tables()
 
 
 if __name__ == "__main__":

@@ -16,8 +16,16 @@ class PlaylistBase(SQLModel):
 class Playlist(PlaylistBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
 
-    users: list['User'] = Relationship(back_populates='playlists', link_model=UserPlaylistLink)
-    musics: list['Music'] = Relationship(back_populates='playlists', link_model=MusicPlaylistLink)
+    users: list['User'] = Relationship(
+        back_populates='playlists',
+        link_model=UserPlaylistLink,
+        sa_relationship_kwargs={"lazy": "selectin"},
+    )
+    musics: list['Music'] = Relationship(
+        back_populates='playlists',
+        link_model=MusicPlaylistLink,
+        sa_relationship_kwargs={"lazy": "selectin"},
+    )
 
 
 class PlaylistCreate(PlaylistBase):
